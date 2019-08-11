@@ -1,7 +1,10 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld
+            :name="'referralDescription'"
+            :options = "referralSearch"
+            v-model="des">
+    </HelloWorld>
   </div>
 </template>
 
@@ -10,19 +13,31 @@ import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'app',
-  components: {
+    data () {
+        return {
+            referralSearch : [
+                {id : 1 , text : 'iran'},
+                {id : 2 , text : 'iran 2'},
+                {id : 3 , text : 'usa'},
+                {id : 4 , text : 'canada'},
+                {id : 5 , text : 'canada'},
+                {id : 6 , text : 'canada'},
+                {id : 7 , text : 'canada'},
+                {id : 8 , text : 'canada'},
+                {id : 9 , text : 'canada'},
+                {id : 10 , text : 'canada'},
+                {id : 11 , text : 'canada'},
+                {id : 12 , text : 'canada'},
+                {id : 13 , text : 'canada'},
+                {id : 14 , text : 'canada'},
+                {id : 15 , text : 'canada'},
+            ],
+            des : '',
+        }
+    },
+    components: {
     HelloWorld
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
