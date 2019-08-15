@@ -1,11 +1,14 @@
-import Vue from 'vue'
+import Vue from 'vue';
 import App from './App.vue'
 
-
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
     render: h => h(App),
 }).$mount('#app')
 
-window.$ = window.jQuery = require('jquery');
+
+
+global.jQuery = require('jquery');
+var $ = global.jQuery;
+window.$ = $;

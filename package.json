@@ -1,10 +1,11 @@
 {
   "name": "vue-auto-complete-input",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.4",
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build-bundle": "vue-cli-service build --target lib --name vue-auto-complete-input",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -16,8 +17,11 @@
     "@vue/cli-plugin-eslint": "^3.10.0",
     "@vue/cli-service": "^3.10.0",
     "babel-eslint": "^10.0.1",
+    "css-loader": "^3.2.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "style-loader": "^1.0.0",
+    "vue-loader": "^15.7.1",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
@@ -42,5 +46,32 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "description": "Flexible and simple use Vue auto complete input",
+  "main": "./dist/vue-auto-complete-input.common.js",
+  "files": [
+    "dist/*",
+    "src/*",
+    "public/*",
+    "*.json",
+    "*.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alijahanpak/vue-auto-complete-input.git"
+  },
+  "keywords": [
+    "Vuejs",
+    "vue",
+    "input",
+    "autocomplete",
+    "suggestion",
+    "text"
+  ],
+  "author": "Ali Jahanpak - Morteza Amzajerdi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alijahanpak/vue-auto-complete-input/issues"
+  },
+  "homepage": "https://github.com/alijahanpak/vue-auto-complete-input#readme"
 }

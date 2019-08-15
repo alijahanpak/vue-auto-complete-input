@@ -1,19 +1,21 @@
 <template>
-  <div>
-    <input type="text" ref="textSuggestionRef" v-model="inputVal" @blur="textSuggestionControl" v-on:keyup="getReferralSuggestion(inputVal)" :name="name" style="width: 100%;height: 100%;margin-bottom: 0px;line-height: 1.5;">
-    <div v-show="textSuggestionState" id="content" ref="content">
-      <div>
-        <div :style="{'width' : textSuggestionWidth + 2 +'px'}" class="textArea-suggestion" id="scrollContent1">
-          <ul style="list-style:none;margin : 0;padding: 0;" class="scrollContent" id="ulScrollContent"  v-for="refSearch in referralSearch">
-            <li @click.self="setReferralTest(refSearch)" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" :style="{'width' : textSuggestionWidth -30 +'px'}"  :class="inputValIdTemp == refSearch.id ? 'selectedWithArrow' : ''" >{{refSearch.text}}</li>
-          </ul>
+    <div>
+        <input type="text" class="my-input" ref="textSuggestionRef" v-model="inputVal" @blur="textSuggestionControl" v-on:keyup="getReferralSuggestion(inputVal)" :name="name" style="width: 100%;height: 100%;margin-bottom: 0px;line-height: 1.5;">
+        <div v-show="textSuggestionState" id="content" ref="content">
+            <div>
+                <div :style="{'width' : textSuggestionWidth + 2 +'px'}" class="my-input-suggestion" id="scrollContent1">
+                    <ul style="list-style:none;margin : 0;padding: 0;" class="scrollContent" id="ulScrollContent"  v-for="refSearch in referralSearch">
+                        <li @click.self="setReferralTest(refSearch)" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;" :style="{'width' : textSuggestionWidth -30 +'px'}"  :class="inputValIdTemp == refSearch.id ? 'selectedWithArrow' : ''" >{{refSearch.text}}</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </template>
 
 <script>
+    import jQuery from 'jquery';
+    let $ = jQuery;
     export default{
         props:['options' , 'value' , 'name'],
         data () {
@@ -148,75 +150,67 @@
         }
     }
 </script>
+<style src="./../assets/css/style.css"></style>
+<style>
+    .my-input-suggestion{
+        position: absolute;
+        z-index: 9999;
+        background-color: #ffffff;
+        box-shadow: 0px 0px 5px #1E90FF;
+        transition: all .15s ease;
+        -webkit-transform: translateY(-2px);
+        max-height: 150px;
+        min-height: 38px;
+        overflow-y: auto;
+    }
 
-<style scoped>
-  .form-element-margin-btm {
-    margin-bottom: 0px;
-  }
-  .margin-top-grid{
-    margin-top: 8px;
-  }
-  .textArea-suggestion{
-    position: absolute;
-    z-index: 9999;
-    background-color: #ffffff;
-    box-shadow: 0px 0px 5px #1E90FF;
-    transition: all .15s ease;
-    -webkit-transform: translateY(-2px);
-    max-height: 150px;
-    min-height: 38px;
-    overflow-y: auto;
-  }
+    .my-input-suggestion ul li{
+        padding: 8px;
+        font-weight: normal;
+        border-bottom: 1px solid #FAFAFA;
+        color : #777777;
+    }
 
-  .textArea-suggestion ul li{
-    padding: 8px;
-    font-weight: normal;
-    border-bottom: 1px solid #FAFAFA;
-    color : #777777;
-  }
+    .my-input-suggestion ul li:hover{
+        background-color: #F5F5F5;
+        cursor: pointer;
+    }
 
-  .textArea-suggestion ul li:hover{
-    background-color: #F5F5F5;
-    cursor: pointer;
-  }
+    .scrollContent{
 
-  .scrollContent{
+    }
+    .selectedWithArrow{
+        background-color: #F5F5F5;
+    }
 
-  }
-  .selectedWithArrow{
-    background-color: #F5F5F5;
-  }
+    .my-input{
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        height: 2.4375rem;
+        margin: 0 0 1rem;
+        padding: 0.5rem;
+        border: 1px solid #cacaca;
+        border-radius: 0px;
+        background-color: #fefefe;
+        box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
+        font-family: inherit;
+        font-size: 1rem;
+        font-weight: normal;
+        line-height: 1.5;
+        color: #0a0a0a;
+        transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+    }
 
-  [type="text"]{
-  display: block;
-  box-sizing: border-box;
-  width: 100%;
-  height: 2.4375rem;
-  margin: 0 0 1rem;
-  margin-bottom: 1rem;
-  padding: 0.5rem;
-  border: 1px solid #cacaca;
-  border-radius: 0px;
-  background-color: #fefefe;
-  box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
-  font-family: inherit;
-  font-size: 1rem;
-  font-weight: normal;
-  line-height: 1.5;
-  color: #0a0a0a;
-  transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  }
+    .my-input:focus {
+        background-color: #fefefe;
+        border: 1px solid #8a8a8a;
+        box-shadow: 0 0 5px #1E90FF;
+        outline: medium none;
+        transition: box-shadow 0.5s ease 0s, border-color 0.25s ease-in-out 0s;
+        line-height: 1px;
 
-  input:focus {
-    background-color: #fefefe;
-    border: 1px solid #8a8a8a;
-    box-shadow: 0 0 5px #1E90FF;
-    outline: medium none;
-    transition: box-shadow 0.5s ease 0s, border-color 0.25s ease-in-out 0s;
-    line-height: 1px;
-
-  }
+    }
 </style>

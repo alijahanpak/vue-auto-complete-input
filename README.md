@@ -1,28 +1,47 @@
 # vue-auto-complete-input
 
-## Project setup
+## Install
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+$ npm install --save vue-auto-complete-input
 ```
 
-### Compiles and minifies for production
+Register the component : 
 ```
-npm run build
+import vueAutoCompleteInput from "vue-auto-complete-input";
+import 'vue-auto-complete-input/dist/vue-auto-complete-input.css';
 ```
+### How to use : 
+```html
+<label>Lable
+    <vueAutoCompleteInput
+            style="height: 150px"
+            :name="'description'"
+            :options = "[{'id':'', 'text' : ''}]"
+            v-model="input.description">
+    </vueAutoCompleteInput>
+</label>
+```
+### props:
 
-### Run your tests
-```
-npm run test
-```
+| Name          | Type            | Description  
+| ------------- |---------------  |------------:
+| option        | Array of object | Option list
+| name          | String          | textarea name attribute
 
-### Lints and fixes files
-```
-npm run lint
+### v-validate:
+
+```html
+<label>Lable
+    <vueAutoCompleteInput
+            style="height: 150px"
+            :name="'description'"
+            v-validate="'required'"
+            :class="{'input': true, 'error-border': errors.has('description')}"
+            :options = "[{'id':'', 'text' : ''}]"
+            v-model="input.description">
+    </vueAutoCompleteInput>
+    <span v-show="errors.has('description')" class="error-font">Error Text!</span>
+</label>
 ```
 
 ### Customize configuration
