@@ -6,19 +6,19 @@ $ npm install --save vue-auto-complete-input
 ```
 
 Register the component : 
+public, or a similar entry point, just import your library using:
 ```
-import vueAutoCompleteInput from "vue-auto-complete-input";
+import "vue-auto-complete-input";
 import 'vue-auto-complete-input/dist/vue-auto-complete-input.css';
 ```
 ### How to use : 
 ```html
 <label>Lable
-    <vueAutoCompleteInput
-            style="height: 150px"
+    <vue-auto-complete-input
             :name="'description'"
             :options = "[{'id':'', 'text' : ''}]"
             v-model="input.description">
-    </vueAutoCompleteInput>
+    </vue-auto-complete-input>
 </label>
 ```
 ### props:
@@ -32,14 +32,13 @@ import 'vue-auto-complete-input/dist/vue-auto-complete-input.css';
 
 ```html
 <label>Lable
-    <vueAutoCompleteInput
-            style="height: 150px"
+    <vue-auto-complete-input
             :name="'description'"
             v-validate="'required'"
             :class="{'input': true, 'error-border': errors.has('description')}"
             :options = "[{'id':'', 'text' : ''}]"
             v-model="input.description">
-    </vueAutoCompleteInput>
+    </vue-auto-complete-input>
     <span v-show="errors.has('description')" class="error-font">Error Text!</span>
 </label>
 ```

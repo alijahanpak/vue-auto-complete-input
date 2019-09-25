@@ -18,6 +18,10 @@
     let $ = jQuery;
     export default{
         props:['options' , 'value' , 'name'],
+        styles: {
+            type: Object,
+            default: () => ({}),
+        },
         data () {
             return {
                 textSuggestionState : false,
@@ -82,6 +86,13 @@
 
                         //console.log(JSON.stringify( this.referralSearch[this.selectedIndex]));
                         break;
+                    case 13:
+                            event.preventDefault();
+                            if(this.selectedIndex != -1)
+                                this.inputVal =   this.inputValTemp;
+                            this.selectedIndex = 0;
+                            this.textSuggestionState = false;
+                            break;
                     default:
                         $("#scrollContent1").scrollTop(0);
                         this.selectedIndex = -1;
@@ -103,6 +114,7 @@
                                         this.referralSearch.push(rTemp);
                                         this.scrollVisible = true;
                                     }
+                                    else this.selectedIndex = -1;
                                 }
                                 else{
                                     this.scrollVisible = false;
@@ -115,12 +127,6 @@
                             this.textSuggestionState = true;
                         break;
 
-                }
-                if(event.keyCode == 13){
-                    event.preventDefault();
-                    this.inputVal =   this.inputValTemp;
-                    this.selectedIndex = 0;
-                    this.textSuggestionState = false;
                 }
 
             },
@@ -150,8 +156,8 @@
         }
     }
 </script>
-<style src="./../assets/css/style.css"></style>
-<style>
+
+<style lang="scss" scoped>
     .my-input-suggestion{
         position: absolute;
         z-index: 9999;
@@ -214,3 +220,4 @@
 
     }
 </style>
+
